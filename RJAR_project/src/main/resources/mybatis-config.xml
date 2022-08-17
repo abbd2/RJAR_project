@@ -4,7 +4,9 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
+	<typeAliases>
+		<typeAlias alias="Member" type="com.rjar.www.bean.Member"/>
+	</typeAliases>
 </configuration>
 
 <!-- Mybatis 사용법

@@ -2,24 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- IMemberDao 전용 Mapper: 회원관련 sql -->
-<!-- Mybatis 사용법 
-1. parameterType은 생략 가능, 명시할 경우 1개 Type만 가능
-2. parameterType이 bean(DTO,Entity)인 경우 #{필드명}
-3. parameterType이 변수인 경우 #{변수명}
-4. parameterType이 Map<key,value>인 경우 #{key}
-5. select제외한 나머지 태그는 resultType 사용불가
-6. resultType이 bean일때 컬럼명과 필드명이 일치하는 것끼리 매핑된다.
-7. resultType이 Map일때 컬럼명이 key(대문자)로 설정된다. 
-8. #{} : 문자열인 경우 따옴표('') 추가됨
-9. ${} : 문자열인 경우 따옴표('') 추가없음(예, 컬럼명 전달시)
- -->
-<!-- <mapper namespace="memberMapper">
-	<select id="access" resultType="boolean">
-		SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{m_id} AND M_PWD=#{m_pwd}
+<!-- Mybatis 사용법 1. parameterType은 생략 가능, 명시할 경우 1개 Type만 가능 2. parameterType이 
+	bean(DTO,Entity)인 경우 #{필드명} 3. parameterType이 변수인 경우 #{변수명} 4. parameterType이 
+	Map<key,value>인 경우 #{key} 5. select제외한 나머지 태그는 resultType 사용불가 6. resultType이 
+	bean일때 컬럼명과 필드명이 일치하는 것끼리 매핑된다. 7. resultType이 Map일때 컬럼명이 key(대문자)로 설정된다. 
+	8. #{} : 문자열인 경우 따옴표('') 추가됨 9. ${} : 문자열인 경우 따옴표('') 추가없음(예, 컬럼명 전달시) -->
+<!-- <mapper namespace="memberMapper"> <select id="access" resultType="boolean"> 
+	SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{m_id} AND M_PWD=#{m_pwd} </select> 
+	</mapper> -->
+
+<mapper namespace="com.rjar.www.dao.IMemberDao">
+	<select id="showMember" resultType="Member">
+		select * from member
 	</select>
-</mapper> -->
-
-<mapper>
-
 </mapper>
 
