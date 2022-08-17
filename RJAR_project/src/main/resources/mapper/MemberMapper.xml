@@ -12,8 +12,11 @@
 	</mapper> -->
 
 <mapper namespace="com.rjar.www.dao.IMemberDao">
+
+	<!-- id를 함수명과 같게 할 것 -->
 	<select id="showMember" resultType="Member">
 		select * from member
 	</select>
+	
 </mapper>
 

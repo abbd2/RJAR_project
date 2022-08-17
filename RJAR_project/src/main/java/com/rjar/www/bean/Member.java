@@ -5,6 +5,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
+// mybatis-config.xml에 올려놓음
 public class Member {
 
 	private String id;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.rjar.www.bean.Member;
 import com.rjar.www.dao.IMemberDao;
@@ -18,16 +19,29 @@ public class HomeController {
 	@Autowired
 	private IMemberDao mDao;
 
+	ModelAndView mav;
+
+	// servlet-context.xml에서 해당 패키지 스캔
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
-		
+	public ModelAndView home(Model model) {
+
+		// 인터페이스로 선언된 mDao의 showMember 호출
 		Member mm = mDao.showMember();
+		// log4j를 활용하여 값 출력
 		log.info(mm);
-		
+
 		System.out.println("id: " + mm.getId());
 		System.out.println("pw: " + mm.getPw());
 
-		return "home";
+		mav = new ModelAndView();
+		// 사용할 값 설정
+		mav.addObject("id", mm.getId());
+		mav.addObject("pw", mm.getPw());
+
+		// 이동할 뷰페이지 설정
+		mav.setViewName("home");
+
+		return mav;
 	}
 
 }
