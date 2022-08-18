@@ -20,7 +20,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
-	
+
 <style type="text/css">
 .summoner-search-outter-box {
 	display: flex;
@@ -28,84 +28,89 @@
 	align-items: center;
 	margin-right: 100px;
 }
-.main-text-center{
-    width:500px;
-    height:300px;
-    position:absolute;
-    left:50%;
-    top:50%;
-    margin-left:-150px;
-    margin-top:-100px;
+
+.main-text-center {
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -150px;
+	margin-top: -100px;
 }
-#summoner-search-box{
-    margin-left:-150px;
-    width: 500px;
+
+#summoner-search-box {
+	margin-left: -150px;
+	width: 500px;
 }
+
 .w-btn {
-    position: relative;
-    border: none;
-    display: inline-block;
-    padding: 15px 30px;
-    border-radius: 15px;
-    font-family: "paybooc-Light", sans-serif;
-    font-size: 16px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.25s;
+	position: relative;
+	border: none;
+	display: inline-block;
+	padding: 15px 30px;
+	border-radius: 15px;
+	font-family: "paybooc-Light", sans-serif;
+	font-size: 16px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 700;
+	transition: 0.25s;
 }
 
 .w-btn-outline {
-    position: relative;
-    padding: 15px 30px;
-    border-radius: 15px;
-    font-family: "paybooc-Light", sans-serif;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
+	position: relative;
+	padding: 15px 30px;
+	border-radius: 15px;
+	font-family: "paybooc-Light", sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 600;
+	transition: 0.25s;
 }
+
 .w-btn-green {
-    background-color: #77af9c;
-    color: #d7fff1;
+	background-color: #77af9c;
+	color: #d7fff1;
 }
 
 .w-btn-green-outline {
-    border: 3px solid #77af9c;
-    color: darkgray;
+	border: 3px solid #77af9c;
+	color: darkgray;
 }
 
 .w-btn-green-outline:hover {
-    background-color: #77af9c;
-    color: #d7fff1;
+	background-color: #77af9c;
+	color: #d7fff1;
 }
+
 .w-btn:hover {
-    letter-spacing: 1.5px;
-    transform: scale(1.2);
-    cursor: pointer;
+	letter-spacing: 1.5px;
+	transform: scale(1.2);
+	cursor: pointer;
 }
 
 .w-btn-outline:hover {
-    letter-spacing: 1.5px;
-    transform: scale(1.2);
-    cursor: pointer;
+	letter-spacing: 1.5px;
+	transform: scale(1.2);
+	cursor: pointer;
 }
 
 .w-btn:active {
-    transform: scale(1.2);
+	transform: scale(1.2);
 }
 
 .w-btn-outline:active {
-    transform: scale(1.2);
-}
-#summoner-search-btn:focus { 
-    outline:none;
-}
-.main-text{
-   font-size: 50px;
+	transform: scale(1.2);
 }
 
+#summoner-search-btn:focus {
+	outline: none;
+}
 
+.main-text {
+	font-size: 50px;
+}
 </style>
 
 </head>
@@ -122,7 +127,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav me-auto">
-						<li class="nav-item"><a class="nav-link" href="./championDetail">챔피언분석</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="./championDetail">챔피언분석</a></li>
 						<li class="nav-item"><a class="nav-link" href="./laboratory">연구소</a></li>
 						<li class="nav-item"><a class="nav-link" href="./multiSearch">멀티서치</a></li>
 						<li class="nav-item"><a class="nav-link" href="./community">커뮤니티</a></li>
@@ -135,19 +141,22 @@
 			</div>
 		</nav>
 	</div>
-	<div class="main">
-	   <div class="container">
-			<div class="main-text-center">
-				<h1 class="main-text">RJAR.GG</h1>
-				<div class="input-group mb-3" id="summoner-search-box">
-					<input type="text" class="form-control"
-						placeholder="소환사명을 입력하세요"
-						aria-label="Recipient's username" aria-describedby="button-addon2">
-					<button class="w-btn w-btn-green" type="button" id="summoner-search-btn">search</button>
+	<form action="summonerSearch" method="get">
+		<div class="main">
+			<div class="container">
+				<div class="main-text-center">
+					<h1 class="main-text">RJAR.GG</h1>
+					<div class="input-group mb-3" id="summoner-search-box">
+						<input type="text" class="form-control" placeholder="소환사명을 입력하세요"
+							aria-label="Recipient's username"
+							aria-describedby="button-addon2" name="summonerName">
+						<button class="w-btn w-btn-green" type="sumbmit"
+							id="summoner-search-btn">search</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	<div id="footer"></div>
 </body>
 </html>
