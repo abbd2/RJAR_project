@@ -3,6 +3,7 @@ package com.rjar.www;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,6 +41,46 @@ public class HomeController {
 
 		// 이동할 뷰페이지 설정
 		mav.setViewName("home");
+
+		return mav;
+	}
+
+	@GetMapping(value = "/championDetail")
+	public ModelAndView championDetail() {
+		
+		mav.setViewName("championDetail");
+
+		return mav;
+	}
+	
+	@GetMapping(value = "/laboratory")
+	public ModelAndView laboratory() {
+		
+		mav.setViewName("laboratory");
+
+		return mav;
+	}
+	
+	@GetMapping(value = "/multiSearch")
+	public ModelAndView multiSearch() {
+		
+		mav.setViewName("multiSearch");
+
+		return mav;
+	}
+	
+	@GetMapping(value = "/community")
+	public ModelAndView community() {
+		
+		mav.setViewName("community");
+
+		return mav;
+	}
+	
+	@GetMapping(value = "/lck")
+	public ModelAndView lck() {
+		
+		mav.setViewName("lck");
 
 		return mav;
 	}
