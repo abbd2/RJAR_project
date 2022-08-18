@@ -26,6 +26,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Model model) {
 
+		// 임시수정
 		// 인터페이스로 선언된 mDao의 showMember 호출
 		Member mm = mDao.showMember();
 		// log4j를 활용하여 값 출력
@@ -65,7 +66,7 @@ public class HomeController {
 	public ModelAndView multiSearch() {
 		
 		mav.setViewName("multiSearch");
-		//asd
+		
 		return mav;
 	}
 	

@@ -10,5 +10,6 @@ public class Member {
 
 	private String id;
 	private String pw;
+	// 재커밋을 위한 변경
 
 }
