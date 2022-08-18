@@ -43,12 +43,12 @@ public class HomeController {
 	@GetMapping(value = "/summonerSearch")
 	public ModelAndView summonerSearch(String summonerName) {
 
-		System.out.println("검색한 소환사의 이름: " + summonerName);
+		log.info(summonerName); // 검색한 소환사 이름 콘솔에 출력
 		
-		mav = new ModelAndView();
-		mav.addObject("summonerName", summonerName);
-		mav.setViewName("summonerSearch");
-
+		mav = new ModelAndView(); // mav 객체 생성
+		mav.addObject("summonerName", summonerName); // mav 객체에 소환사 이름 add
+		mav.setViewName("summonerSearch"); // mav 객체에 이동할 뷰 이름 set
+		
 		return mav;
 	}
 
