@@ -34,6 +34,10 @@ public class SummonerSearchMM {
 
 //		return
 	}
+	
+	public void getRawData() {
+		
+	}
 
 	// 계산이 필요한 데이터 처리
 	public ModelAndView sSummonerSearchCal() {
