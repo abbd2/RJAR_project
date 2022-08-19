@@ -1,7 +1,5 @@
 package com.rjar.www.bean.summonersearch;
 
-import java.util.ArrayList;
-
 import lombok.Data;
 import lombok.experimental.Accessors;
 

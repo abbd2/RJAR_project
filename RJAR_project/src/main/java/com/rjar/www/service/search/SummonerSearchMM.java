@@ -9,7 +9,8 @@ import lombok.extern.log4j.Log4j;
 public class SummonerSearchMM {
 
 	// 전적 검색에 필요한 데이터를 API로 받아오기
-	public void SummonerSearchAPI(String summonerName) {
+	
+	public void sSummonerSearch(String summonerName) {
 
 		log.info("소환사 이름: " + summonerName);
 		
