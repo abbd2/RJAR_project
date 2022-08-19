@@ -1,64 +1,38 @@
-package com.rjar.www.bean;
+package com.rjar.www.bean.summonersearch;
+
+import java.util.ArrayList;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
-public class SummonerSearch {
+@Accessors(chain = true)
+public class LeftPageChampionDetails {
+	// 전적 검색 페이지에 필요한 데이터(전적 세부 div 제외)
 
-	// TODO
-	// ------- 전적 검색의 헤드 페이지에 필요한 데이터 -------
-	private String summonerImage; // 롤 프로필 사진
-	private String stdSummonerName; // 검색한 소환사 이름
-	private int summonerLevel; // 검색한 소환사 레벨
+	// ------- 전적 검색의 왼쪽 상단 페이지에 필요한 데이터 -------
+	private String ssSummonerImage; // 롤 프로필 사진
+	private String ssSearchSummonerName; // 검색한 소환사 이름
+	private int ssSummonerLevel; // 검색한 소환사 레벨
 	
-	// ---------------- 게임 내용에 필요한 데이터 ----------------
-	private String blue_top_summonerName; // 블루팀 탑 소환사 이름
-	private String blue_jungle_summonerName; // 블루팀 정글 소환사 이름
-	private String blue_mid_summonerName; // 블루팀 미드 소환사 이름
-	private String blue_bot_summonerName; // 블루팀 봇 소환사 이름
-	private String blue_suppot_summonerName; // 블루팀 서폿 소환사 이름
+	// ------- 전적 검색의 왼쪽 중단 페이지에 필요한 데이터 -------		
+	private String ssTierImage; // 티어 이미지
+	private String ssLeaguePoint; // 리그 포인트
+	private String ssTier; // 티어
+	private double ssWinRate; // 종합 승률
+	private int ssTotalGameWin; // 해당 시즌 전체 승리 게임 수
+	private int ssTotalGameRose; // 해당 시즌 전체 패배 게임 수
 	
-	private String red_top_summonerName; // 레드팀 탑 소환사 이름
-	private String red_jungle_summonerName; // 레드팀 정글 소환사 이름
-	private String red_mid_summonerName; // 레드팀 미드 소환사 이름
-	private String red_bot_summonerName; // 레드팀 봇 소환사 이름
-	private String red_suppot_summonerName; // 레드팀 서폿 소환사 이름
-	
-	private String stdChampionName; // 검색한 소환사의 챔피언 이름
-	
-	private String blue_top_championName; // 블루팀 탑 챔피언 이름
-	private String blue_jungle_championName; // 블루팀 정글 챔피언 이름
-	private String blue_mid_championName; // 블루팀 미드 챔피언 이름
-	private String blue_bot_championName; // 블루팀 봇 챔피언 이름
-	private String blue_suppot_championName; // 블루팀 서폿 챔피언 이름
-	
-	private String red_top_championName; // 레드팀 탑 챔피언 이름
-	private String red_jungle_championName; // 레드팀 정글 챔피언 이름
-	private String red_mid_championName; // 레드팀 미드 챔피언 이름
-	private String red_bot_championName; // 레드팀 원딜 챔피언 이름
-	private String red_suppot_championName; // 레드팀 서폿 챔피언 이름
-	
-	private String win; // 경기 결과
-	
-	private int d_spell; // D 스펠
-	private int f_spell; // F 스펠
-	
-	private int main_rune; // 매 인룬
-	private int sub_rune;// 서브 룬
-	
-	private int kills; // 킬
-	private int deaths; // 데스
-	private int assists; // 어시스트
-	private int cs; // cs
-	
-	private int item0; // 0번 아이템 슬롯
-	private int item1; // 1번 아이템 슬롯
-	private int item2; // 2번 아이템 슬롯
-	private int item3; // 3번 아이템 슬롯
-	private int item4; // 4번 아이템 슬롯
-	private int item5; // 5번 아이템 슬롯
-	private int item6; // 6번 아이템 슬롯
-	
-	private int gameDuration; // 게임 시간
-	
+	// ------- 전적 검색의 왼쪽 하단 페이지에 필요한 데이터 -------	
+	private String ssPlayedChampionImage; // 플레이했던 챔피언 이미지
+	private String ssPlayedChampionName; // 플레이했던 챔피언 이름
+	private double ssPlayedChampionKDA; // 하나의 챔피언 종합 KDA
+	private double ssPlayedChampionKills; // 하나의 챔피언 종합 킬 수
+	private double ssPlayedChampionDeaths; // 하나의 챔피언 종합 데스 수
+	private double ssPlayedChampionAssists; // 하나의 챔피언 종합 어시 수
+	private double ssPlayedChampionWinRate; // 플래이했던 챔피언 종합 승률
+	private int ssPlayedChampionCS; // 플레이했던 챔피언의 종합 CS
+	private int ssPlayedChampionCSRate; // 플레이했던 챔피언의 종합 CS 평균
+	private int ssPlayedChampionGameCount; // 플레이했던 챔피언의 게임 수
+		
 }
