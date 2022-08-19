@@ -7,6 +7,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class GameDetailShowInfo {
 	
+	// 사용하지 않는 것들은 지울 예정
+	
 	// ---------------- 게임 내용에 필요한 데이터 ----------------
 		private String ssChampionName; // 검색한 소환사의 챔피언 이름
 	

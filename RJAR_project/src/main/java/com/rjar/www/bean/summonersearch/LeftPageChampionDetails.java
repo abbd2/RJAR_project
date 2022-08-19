@@ -6,6 +6,9 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class LeftPageChampionDetails {
+	
+	// 사용하지 않는 것들은 지울 예정
+	
 	// 전적 검색 페이지에 필요한 데이터(전적 세부 div 제외)
 
 	// ------- 전적 검색의 왼쪽 상단 페이지에 필요한 데이터 -------
@@ -22,7 +25,6 @@ public class LeftPageChampionDetails {
 	private int ssTotalGameRose; // 해당 시즌 전체 패배 게임 수
 	
 	// ------- 전적 검색의 왼쪽 하단 페이지에 필요한 데이터 -------	
-	private String ssPlayedChampionImage; // 플레이했던 챔피언 이미지
 	private String ssPlayedChampionName; // 플레이했던 챔피언 이름
 	private double ssPlayedChampionKDA; // 하나의 챔피언 종합 KDA
 	private double ssPlayedChampionKills; // 하나의 챔피언 종합 킬 수
