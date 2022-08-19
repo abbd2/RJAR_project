@@ -22,7 +22,7 @@ public class LeftPageChampionDetails {
 	private String ssTier; // 티어
 	private double ssWinRate; // 종합 승률
 	private int ssTotalGameWin; // 해당 시즌 전체 승리 게임 수
-	private int ssTotalGameRose; // 해당 시즌 전체 패배 게임 수
+	private int ssTotalGameLose; // 해당 시즌 전체 패배 게임 수
 	
 	// ------- 전적 검색의 왼쪽 하단 페이지에 필요한 데이터 -------	
 	private String ssPlayedChampionName; // 플레이했던 챔피언 이름
@@ -31,6 +31,7 @@ public class LeftPageChampionDetails {
 	private double ssPlayedChampionDeaths; // 하나의 챔피언 종합 데스 수
 	private double ssPlayedChampionAssists; // 하나의 챔피언 종합 어시 수
 	private double ssPlayedChampionWinRate; // 플래이했던 챔피언 종합 승률
+	
 	private int ssPlayedChampionCS; // 플레이했던 챔피언의 종합 CS
 	private int ssPlayedChampionCSRate; // 플레이했던 챔피언의 종합 CS 평균
 	private int ssPlayedChampionGameCount; // 플레이했던 챔피언의 게임 수
