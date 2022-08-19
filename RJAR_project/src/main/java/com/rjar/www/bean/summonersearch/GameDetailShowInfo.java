@@ -1,6 +1,7 @@
 package com.rjar.www.bean.summonersearch;
 
 import lombok.Data;
+
 import lombok.experimental.Accessors;
 
 @Data

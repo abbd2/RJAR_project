@@ -25,5 +25,9 @@
 <body>
 <h1>전적 검색 페이지</h1>
 <h2>검색한 소환사 이름: ${summonerName}</h2>
+<h2>${id}</h2>
+<h2>${name}</h2>
+<h2>${puuid}</h2>
+<h2>${LV}</h2>
 </body>
 </html>
