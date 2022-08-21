@@ -25,9 +25,8 @@ public class SummonerSearchController {
 		mav = new ModelAndView(); // mav 객체 생성
 		log.info(summonerName); // 검색한 소환사 이름 콘솔에 출력
 		ssm = new SummonerSearchMM();
-		mav = ssm.sSummonerSearch(summonerName);
+		mav = ssm.sSummonerSearch(summonerName.replaceAll("\\s", "")); //이름에 공백이 들어간경우 검색이되지 않아, 공백을 제거한 형태이다.
 		
-		mav.addObject("summonerName", summonerName); // mav 객체에 소환사 이름 add
 		mav.setViewName("summonerSearch"); // mav 객체에 이동할 뷰 이름 set
 		
 		return mav;
