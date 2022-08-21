@@ -81,7 +81,8 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-<!-- 			<scope>runtime</scope> -->
+			<!-- @Log4j를 사용하려면 주석처리 -->
+			<!-- <scope>runtime</scope> -->
 		</dependency>
 
 		<!-- @Inject -->
@@ -163,6 +164,14 @@
 			<version>4.0.3</version>
 		</dependency>
 
+		<!-- log4jdbc-log4j2-jdbc4.1 로그를 출력하기 위해 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
+		</dependency>
+
+
 		<!-- Mybatis: DB Framework -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -188,17 +197,24 @@
 		</dependency>
 
 		<!-- Gson -->
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.9.0</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.google.code.gson</groupId> -->
+		<!-- <artifactId>gson</artifactId> -->
+		<!-- <version>2.9.0</version> -->
+		<!-- </dependency> -->
 		<!-- jackson 추후에 추가, Gson대신에 사용, 속도가 더 빠름 -->
 
 		<dependency>
-			<groupId>org.bgee.log4jdbc-log4j2</groupId>
-			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
-			<version>1.16</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.3</version>
+		</dependency>
+
+		<!--jackson-dataformat-xml : 객체를 xml로 변환할때 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.10.3</version>
 		</dependency>
 
 		<!-- 파일 업로드 -->
@@ -215,11 +231,39 @@
 			<version>2.11.0</version>
 		</dependency>
 
-		<!-- Test -->
+		<!-- 스프링 시큐리티 : 비번 암호화, 로그인, 인증 -->
+		<!-- spring-security-core -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.7.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>oraclepki</artifactId>
+			<version>19.10.0.0</version>
+		</dependency>
+
+		<!-- osdt_cert -->
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_cert</artifactId>
+			<version>19.10.0.0</version>
+		</dependency>
+
+		<!-- osdt_core -->
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_core</artifactId>
+			<version>19.10.0.0</version>
+		</dependency>
+
+		<!-- spring-test : spring에서 junit사용 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.3.18</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
