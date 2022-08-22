@@ -33,6 +33,7 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div id="main"></div>
+
 <div id="footer"></div>
 </body>
 </html>

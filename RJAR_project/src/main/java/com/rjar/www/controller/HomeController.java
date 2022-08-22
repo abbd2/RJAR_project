@@ -1,9 +1,7 @@
 package com.rjar.www.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,13 +21,13 @@ public class HomeController {
 	ModelAndView mav;
 
 	// servlet-context.xml에서 해당 패키지 스캔
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	@GetMapping(value = "/")
+	public String home() {
 		return "home";
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String main(Model model) {
+	@GetMapping(value = "/home")
+	public String main() {
 
 		return "home";
 	}

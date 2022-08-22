@@ -197,18 +197,19 @@
 		</dependency>
 
 		<!-- Gson -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.google.code.gson</groupId> -->
-		<!-- <artifactId>gson</artifactId> -->
-		<!-- <version>2.9.0</version> -->
-		<!-- </dependency> -->
+		<dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+		<version>2.9.0</version>
+		</dependency>
 		<!-- jackson 추후에 추가, Gson대신에 사용, 속도가 더 빠름 -->
 
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.13.3</version>
-		</dependency>
+		<!-- jackson -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.fasterxml.jackson.core</groupId> -->
+<!-- 			<artifactId>jackson-databind</artifactId> -->
+<!-- 			<version>2.13.3</version> -->
+<!-- 		</dependency> -->
 
 		<!--jackson-dataformat-xml : 객체를 xml로 변환할때 -->
 		<dependency>
