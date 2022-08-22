@@ -11,7 +11,6 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<property name="url" value="jdbc:log4jdbc:oracle:thin:@testoracle_high?TNS_ADMIN=D:/down/wallet" />
-		<property name="url" value="jdbc:log4jdbc:oracle:thin:@testoracle_high?TNS_ADMIN=/Users/seongho/Documents/wallet" />
 		<property name="username" value="admin" />
 		<property name="password" value="!Wa494949555" />
 			<!-- 히카리C pool 설정 : dbcp2 -->
