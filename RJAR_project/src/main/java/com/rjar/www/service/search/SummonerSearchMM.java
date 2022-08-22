@@ -3,6 +3,7 @@ package com.rjar.www.service.search;
 import java.io.BufferedReader;
 
 
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -35,49 +36,23 @@ public class SummonerSearchMM {
 	private GameDetailShowInfo gd;
 
 	ModelAndView mav;
+	String api_key = "RGAPI-4843ae9e-7ede-4140-8341-164bbda24a7b";
 
-	public ModelAndView sSummonerSearch(String summonerName) {
+	public ModelAndView sSummonerSearch(String id) {
 
-		log.info("소환사 이름: " + summonerName);
+		log.info("소환사 이름: " + id);
 		BufferedReader br = null;
-		String view = null;
 		mav = new ModelAndView();
-		String api_key = "RGAPI-4843ae9e-7ede-4140-8341-164bbda24a7b";
-		String proFileUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName
-				+ "?api_key=" + api_key;
-		System.out.println(proFileUrl);
+		String tierInfoUrl = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+id+"?api_key="+api_key;
 
 		// 개인 권한 API
 		try {
 			// URL 객체 생성
-			URL url1 = new URL(proFileUrl);
 			// URL에서 URLConnection 객체 얻기(프로토콜이 http://인 경우 아래 객체로 캐스팅 가능)
-			HttpURLConnection urlconnection = (HttpURLConnection) url1.openConnection(); // openConnection() 메서드는
-																							// IOException 발생
-			urlconnection.setRequestMethod("GET");
-			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
-			System.out.println(br);
-
-			String result = "";
-			String line1;
-			while ((line1 = br.readLine()) != null) {
-				result += line1;
-			}
-			System.out.println(result);
-			//json object를 추출하기 위해 json형태로 parser한다.
-			JsonParser jsonParser = new JsonParser();
-			JsonObject k = (JsonObject) jsonParser.parse(result);
-			int profileIconId = k.get("profileIconId").getAsInt();
-			String puuid = k.get("puuid").getAsString();
-			long summonerLevel = k.get("summonerLevel").getAsLong();
-			String id = k.get("id").getAsString();
-			String name = k.get("name").getAsString();
-			
 			
 			//위에서 받은 id로 url에 넣어 tier관련 정보 추출
-			String tierInfoUrl = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+id+"?api_key="+api_key;
-			URL url2 = new URL(tierInfoUrl);
-			urlconnection = (HttpURLConnection) url2.openConnection();
+			URL url = new URL(tierInfoUrl);
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
 			
@@ -85,8 +60,9 @@ public class SummonerSearchMM {
 			String result1=br.readLine();
 			System.out.println(result1);
 			
+			JsonParser jsonParser = new JsonParser();
 			// 해당형태는 jsonArray형태라 jsonArray로 먼저 parser하여 json object를 구해야한다.
-			JsonArray jsonArray = (JsonArray) jsonParser.parse(result1);
+			JsonArray jsonArray = (JsonArray)jsonParser.parse(result1);
 			System.out.println("길이="+jsonArray.size());
 			
 			
@@ -152,8 +128,6 @@ public class SummonerSearchMM {
 				freeTier = "unranked";
 			}
 			
-			System.out.println("puuid=" + puuid);
-			System.out.println("LV=" + summonerLevel);
 			System.out.println("freeTier=" + freeTier);
 			System.out.println("freeLeaguePoint=" + freeLeaguePoint);
 			System.out.println("freeWins=" + freeWins);
@@ -165,12 +139,6 @@ public class SummonerSearchMM {
 			System.out.println("soloLooses=" + soloLosses);		
 			System.out.println("soloWinRate=" + soloWinRate);		
 			
-			mav.setViewName("summonerSearch");
-			mav.addObject("summonerName",name);
-			mav.addObject("profileIconId",profileIconId);
-			mav.addObject("id", id);
-			mav.addObject("puuid", puuid);
-			mav.addObject("LV", summonerLevel);
 			mav.addObject("freeTier",freeTier);
 			mav.addObject("freeLeaguePoint",freeLeaguePoint);
 			mav.addObject("freeWins",freeWins);
