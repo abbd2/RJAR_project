@@ -1,20 +1,22 @@
 package com.rjar.www.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.rjar.www.dao.IMemberDao;
+import com.rjar.www.service.search.MultiSearchMM;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
+@RequiredArgsConstructor // 롬복을 이용한 생성자 주입 사용
 public class HomeController {
 
-	@Autowired
-	private IMemberDao mDao;
+	private final MultiSearchMM ms;
 
 	ModelAndView mav;
 
@@ -43,8 +45,8 @@ public class HomeController {
 	}
 
 	@GetMapping(value = "/multiSearch")
-	public String multiSearch() {
-
+	public String multiSearch(String summoners) throws IOException {
+		
 		return "multiSearch";
 	}
 

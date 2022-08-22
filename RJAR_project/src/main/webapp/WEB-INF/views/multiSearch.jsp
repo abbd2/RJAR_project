@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,17 +23,25 @@
 <title>Insert title here</title>
 <style type="text/css">
 .summoner-search-outter-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 100px;
 }
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<div id="main"></div>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div id="main"></div>
 
-<div id="footer"></div>
+	<div id="multiSearch">
+		<div id="textarea">
+			<textarea name="summoners" class="form-control" id="exampleTextarea"
+				style="height: 300px">
+			</textarea>
+		</div>
+	</div>
+
+	<div id="footer"></div>
 </body>
 </html>
