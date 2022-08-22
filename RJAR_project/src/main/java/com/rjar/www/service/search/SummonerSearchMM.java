@@ -132,6 +132,7 @@ public class SummonerSearchMM {
 				soloTier = "unranked";
 				freeTier = "unranked";
 			}
+			mav = summonerMatchDetail(puuid);
 
 			mav.setViewName("summonerSearch");
 			mav.addObject("summonerName", name);
@@ -147,9 +148,7 @@ public class SummonerSearchMM {
 			mav.addObject("soloWins", soloWins);
 			mav.addObject("soloLosses", soloLosses);
 			mav.addObject("soloWinRate", (int) (soloWinRate * 100));
-			
-			mav = summonerMatchDetail(puuid);
-		    
+
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -159,33 +158,53 @@ public class SummonerSearchMM {
 	}
 
 	private ModelAndView summonerMatchDetail(String puuid) {
-		
+
 		mav = new ModelAndView();
-		String summonerMatch = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/"+puuid+"/ids?start=0&count=10&api_key="
-				+api_key;
+		String summonerMatch = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid
+				+ "/ids?start=0&count=10&api_key=" + api_key;
 		try {
 			URL url = new URL(summonerMatch);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
-			
+
 			String result = br.readLine();
 			JsonParser jsonParser = new JsonParser();
 			JsonArray jsonArray = (JsonArray) jsonParser.parse(result);
 			System.out.println(jsonArray);
-			jsonArray.get(0).toString();
-			
 
-			for(int i=0; i<jsonArray.size(); i++) {
-				JsonObject p = (JsonObject) jsonArray.get(i);				
-				
+			ArrayList<String> matchDataList = new ArrayList<String>();
+			if (jsonArray != null) {
+				for (int i = 0; i < jsonArray.size(); i++) {
+					matchDataList.add(jsonArray.get(i).toString());
+				}
 			}
 			
-			
+			String matchUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/";
+			ArrayList<Object> matchData = new ArrayList<Object>();
+			for(int i=0; i<1; i++) {
+				URL url2 = new URL(matchUrl+matchDataList.get(i).replaceAll("\"", "")+"?api_key="+api_key);
+				urlconnection = (HttpURLConnection) url2.openConnection();
+				urlconnection.setRequestMethod("GET");
+				br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+				String result1 = br.readLine();
+				JsonParser jsonParser1 = new JsonParser();
+				JsonObject k = (JsonObject) jsonParser1.parse(result1);
+				JsonObject info = (JsonObject)k.get("info");
+				
+				matchData.add(info.get("gameDuration"));
+				matchData.add(info.get("gameEndTimestamp"));
+				
+				
+												
+			}
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
+	
+
 		return mav;
 	}
 
