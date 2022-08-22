@@ -1,9 +1,13 @@
 package com.rjar.www.service.search;
 
 import java.io.BufferedReader;
+
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,18 +24,15 @@ public class SummonerSearchMM {
 	// 전적 검색에 필요한 데이터를 API로 받아오기
 
 	ModelAndView mav;
+	String api_key = "RGAPI-4843ae9e-7ede-4140-8341-164bbda24a7b";
+	BufferedReader br = null;
 
 	public ModelAndView sSummonerSearch(String summonerName) {
 
 		log.info("소환사 이름: " + summonerName);
-		BufferedReader br = null;
-		String view = null;
 		mav = new ModelAndView();
-		String api_key = "RGAPI-4843ae9e-7ede-4140-8341-164bbda24a7b";
 		String proFileUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName
 				+ "?api_key=" + api_key;
-		System.out.println(proFileUrl);
-
 		// 개인 권한 API
 		try {
 			// URL 객체 생성
@@ -48,7 +49,6 @@ public class SummonerSearchMM {
 			while ((line1 = br.readLine()) != null) {
 				result += line1;
 			}
-			System.out.println(result);
 			// json object를 추출하기 위해 json형태로 parser한다.
 			JsonParser jsonParser = new JsonParser();
 			JsonObject k = (JsonObject) jsonParser.parse(result);
@@ -66,13 +66,9 @@ public class SummonerSearchMM {
 			urlconnection.setRequestMethod("GET");
 			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
 
-			System.out.println(br);
 			String result1 = br.readLine();
-			System.out.println(result1);
-
 			// 해당형태는 jsonArray형태라 jsonArray로 먼저 parser하여 json object를 구해야한다.
 			JsonArray jsonArray = (JsonArray) jsonParser.parse(result1);
-			System.out.println("길이=" + jsonArray.size());
 
 			String freeTier;
 			int freeLeaguePoint = 0;
@@ -136,25 +132,11 @@ public class SummonerSearchMM {
 				soloTier = "unranked";
 				freeTier = "unranked";
 			}
-
-			System.out.println("puuid=" + puuid);
-			System.out.println("LV=" + summonerLevel);
-			System.out.println("freeTier=" + freeTier);
-			System.out.println("freeLeaguePoint=" + freeLeaguePoint);
-			System.out.println("freeWins=" + freeWins);
-			System.out.println("freeLooses=" + freeLosses);
-			System.out.println("freeWinRate=" + freeWinRate);
-			System.out.println("soloTier=" + soloTier);
-			System.out.println("soloLeaguePoint=" + soloLeaguePoint);
-			System.out.println("soloWins=" + soloWins);
-			System.out.println("soloLooses=" + soloLosses);
-			System.out.println("soloWinRate=" + soloWinRate);
+			mav = summonerMatchDetail(puuid);
 
 			mav.setViewName("summonerSearch");
 			mav.addObject("summonerName", name);
 			mav.addObject("profileIconId", profileIconId);
-			mav.addObject("id", id);
-			mav.addObject("puuid", puuid);
 			mav.addObject("LV", summonerLevel);
 			mav.addObject("freeTier", freeTier);
 			mav.addObject("freeLeaguePoint", freeLeaguePoint);
@@ -167,6 +149,7 @@ public class SummonerSearchMM {
 			mav.addObject("soloLosses", soloLosses);
 			mav.addObject("soloWinRate", (int) (soloWinRate * 100));
 
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -174,14 +157,53 @@ public class SummonerSearchMM {
 
 	}
 
-	public void getRawData() {
-
-	}
-
-	// 계산이 필요한 데이터 처리
-	public ModelAndView sSummonerSearchCal() {
+	private ModelAndView summonerMatchDetail(String puuid) {
 
 		mav = new ModelAndView();
+		String summonerMatch = "https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/" + puuid
+				+ "/ids?start=0&count=10&api_key=" + api_key;
+		try {
+			URL url = new URL(summonerMatch);
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+			urlconnection.setRequestMethod("GET");
+			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+
+			String result = br.readLine();
+			JsonParser jsonParser = new JsonParser();
+			JsonArray jsonArray = (JsonArray) jsonParser.parse(result);
+			System.out.println(jsonArray);
+
+			ArrayList<String> matchDataList = new ArrayList<String>();
+			if (jsonArray != null) {
+				for (int i = 0; i < jsonArray.size(); i++) {
+					matchDataList.add(jsonArray.get(i).toString());
+				}
+			}
+			
+			String matchUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/";
+			ArrayList<Object> matchData = new ArrayList<Object>();
+			for(int i=0; i<1; i++) {
+				URL url2 = new URL(matchUrl+matchDataList.get(i).replaceAll("\"", "")+"?api_key="+api_key);
+				urlconnection = (HttpURLConnection) url2.openConnection();
+				urlconnection.setRequestMethod("GET");
+				br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+				String result1 = br.readLine();
+				JsonParser jsonParser1 = new JsonParser();
+				JsonObject k = (JsonObject) jsonParser1.parse(result1);
+				JsonObject info = (JsonObject)k.get("info");
+				
+				matchData.add(info.get("gameDuration"));
+				matchData.add(info.get("gameEndTimestamp"));
+				
+				
+												
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	
 
 		return mav;
 	}
