@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +21,61 @@
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
 <title>summonerSearch</title>
+<style type="text/css">
+.summoner-search-outter-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+}
+
+.header {
+	height: 20%;
+	border-color: 
+}
+
+.main {
+	height: 60%;
+	border-color: red;
+}
+
+.footer {
+	height: 20%
+}
+</style>
 </head>
 <body>
-<h1>전적 검색 페이지</h1>
-<h2>검색한 소환사 이름: ${summonerName}</h2>
-<h2>${id}</h2>
-<h2>${name}</h2>
-<h2>${puuid}</h2>
-<h2>${LV}</h2>
+<div class= header>
+<jsp:include page="header.jsp"></jsp:include>
+</div>
+	<div class="main">
+		<div class="left-main">
+			<div class="left-sub-detail"></div>
+			<div class="left-playChamp-detail"></div>
+		</div>
+		<div class="right-main"></div>
+	</div>
+	<div class="footer"></div>
+	<img
+		src="http://ddragon.leagueoflegends.com/cdn/12.15.1/img/profileicon/${profileIconId}.png">
+	<h1>전적 검색 페이지</h1>
+	<h2>검색한 소환사 이름: ${summonerName}</h2>
+	<h2>${puuid}</h2>
+	<h2>${LV}</h2>
+	<h1>자유랭크</h1>
+	<h2>${freeTier}</h2>
+	<h2>${freeLeaguePoint}</h2>
+	<h2>${freeWins}</h2>
+	<h2>${freeLosses}</h2>
+	<h2>${freeWinRate}%</h2>
+	<h1>솔로랭크</h1>
+	<h2>${soloTier}</h2>
+	<h2>${soloLeaguePoint}</h2>
+	<h2>${soloWins}</h2>
+	<h2>${soloLosses}</h2>
+	<h2>${soloWinRate}%</h2>
+	
+	<div id="main"></div>
+	<div id="footer"></div>
 </body>
 </html>
