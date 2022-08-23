@@ -24,66 +24,38 @@ public class HomeController {
 
 	// servlet-context.xml에서 해당 패키지 스캔
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(Model model) {
-
-		// 임시수정
-		// 인터페이스로 선언된 mDao의 showMember 호출
-		Member mm = mDao.showMember();
-		// log4j를 활용하여 값 출력
-		log.info(mm);
-
-		System.out.println("id: " + mm.getId());
-		System.out.println("pw: " + mm.getPw());
-
-		mav = new ModelAndView();
-		// 사용할 값 설정
-		mav.addObject("id", mm.getId());
-		mav.addObject("pw", mm.getPw());
-
-		// 이동할 뷰페이지 설정
-		mav.setViewName("home");
-
-		return mav;
+	public String home() {
+		return "home";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String main() {
+		return "home";
 	}
 
-	@GetMapping(value = "/championDetail")
-	public ModelAndView championDetail() {
-		
-		mav.setViewName("championDetail");
-
-		return mav;
+	@GetMapping(value = "/Detail/championHome")
+	public String championDetail() {
+		return "/Detail/championHome";
 	}
 	
 	@GetMapping(value = "/laboratory")
-	public ModelAndView laboratory() {
-		
-		mav.setViewName("laboratory");
-
-		return mav;
+	public String laboratory() {
+		return "laboratory";
 	}
 	
 	@GetMapping(value = "/multiSearch")
-	public ModelAndView multiSearch() {
-		
-		mav.setViewName("multiSearch");
-		
-		return mav;
+	public String multiSearch() {		
+		return "multiSearch";
 	}
 	
 	@GetMapping(value = "/community")
-	public ModelAndView community() {
-		
-		mav.setViewName("community");
-
-		return mav;
+	public String community() {
+		return "community";
 	}
 	
 	@GetMapping(value = "/lck")
-	public ModelAndView lck() {
-		
-		mav.setViewName("lck");
-
-		return mav;
+	public String lck() {
+		return "lck";
 	}
 
 }

@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -101,15 +103,12 @@
 #summoner-search-btn:focus { 
     outline:none;
 }
-.main-text{
-   font-size: 50px;
-}
 
 </style>
 
 </head>
 <body>
-	<div id="header">
+<div id="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="./home">RJAR</a>
@@ -121,32 +120,28 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav me-auto">
-						<li class="nav-item"><a class="nav-link" href="./Detail/championHome">챔피언분석</a></li>
+						<li class="nav-item"><a class="nav-link" href="./championDetail">챔피언분석</a></li>
 						<li class="nav-item"><a class="nav-link" href="./laboratory">연구소</a></li>
 						<li class="nav-item"><a class="nav-link" href="./multiSearch">멀티서치</a></li>
 						<li class="nav-item"><a class="nav-link" href="./community">커뮤니티</a></li>
 						<li class="nav-item"><a class="nav-link" href="./lck">LCK분석</a></li>
+						
 					</ul>
 				</div>
+				<div class="summoner-search-outter-box"
+					style="text-align: center; vertical-align: middle;">
+					<div class="summoner-search-box" style="display:block; margin-right: 3px;">
+						<input class="form-control me-sm-2" type="text" placeholder="소환사명을 입력하세요">
+					</div>
+					<div class="summoner-search-button">
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>					
+					</div>
+				</div>
 				<div class="login-box">
-					<button id="login-btn" type="button" class="btn btn-success">로그인</button>
+				   <button id="login-btn" type="button" class="btn btn-success">로그인</button>
 				</div>
 			</div>
 		</nav>
 	</div>
-	<div class="main">
-	   <div class="container">
-			<div class="main-text-center">
-				<h1 class="main-text">RJAR.GG</h1>
-				<div class="input-group mb-3" id="summoner-search-box">
-					<input type="text" class="form-control"
-						placeholder="소환사명을 입력하세요"
-						aria-label="Recipient's username" aria-describedby="button-addon2">
-					<button class="w-btn w-btn-green" type="button" id="summoner-search-btn">search</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="footer"></div>
 </body>
 </html>
