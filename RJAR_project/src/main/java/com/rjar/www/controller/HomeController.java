@@ -34,10 +34,10 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping(value = "/championDetail")
+	@GetMapping(value = "/championHome")
 	public String championDetail() {
 
-		return "championDetail";
+		return "Detail/championHome";
 	}
 
 	@GetMapping(value = "/laboratory")

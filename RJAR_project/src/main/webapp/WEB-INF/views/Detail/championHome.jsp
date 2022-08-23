@@ -32,8 +32,18 @@
 </style>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
-	<main></main>
+	<jsp:include page="../header.jsp"></jsp:include>
+	<main>
+		<div id='box'>
+			<div id='main'>
+				<aside>
+					<div id='champion_list'>
+						<jsp:include page="championList.jsp"></jsp:include>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</main>
 	<div id="footer"></div>
 </body>
 </html>
