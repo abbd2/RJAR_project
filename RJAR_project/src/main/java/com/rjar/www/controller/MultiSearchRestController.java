@@ -39,7 +39,7 @@ public class MultiSearchRestController {
 		log.info("jsp에서 넘어온 값" + summoners);
 		String summoners1 = summoners.replace(replaceVal, ""); // replaceVal 제거
 		log.info("replaceval 제거 : " + summoners1);
-		String summoners2 = summoners.replaceAll("\\p{Z}", ""); // 공백 완전히 제거
+		String summoners2 = summoners1.replaceAll("\\p{Z}", ""); // 공백 완전히 제거
 		log.info("공백 완전히 제거 : " + summoners2);
 		String[] summonerName = summoners2.split("\\R|,"); // 개행과 쉼표 문자를 기준으로 나누어서 저장
 
