@@ -33,7 +33,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div id="main"></div>
-
+<!-- 오류해결좀 -->
 	<div id="multiSearch">
 		<form action="executeMultiSearch" method="get">
 			<div id="textarea">
