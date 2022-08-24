@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.Data;
 
+// 다시커밋
 @Data
 @Repository
 public class MultiSearchBean {
