@@ -1,5 +1,12 @@
 package com.rjar.www.bean.summonersearch;
 
+import org.springframework.stereotype.Repository;
+
+
+import lombok.Data;
+
+@Data
+@Repository
 public class MultiSearchBean {
 	
 	private String summonerName;
@@ -7,9 +14,9 @@ public class MultiSearchBean {
 	private String tier;
 	private String rank;
 	private String lp;
-	private String totalWins;
-	private String totalLoses;
-	private String totalWinRate;
+	private int totalWins;
+	private int totalLosses;
+	private int totalWinRate;
 	
 	private String[] lanes;
 	private int[] kilss;
