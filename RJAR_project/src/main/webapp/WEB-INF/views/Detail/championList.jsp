@@ -1,11 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+	.tierVersion{
+		margin-left: 70px;
+	}
+	
+	.selectOption {
+		width: 150px;
+		height: 50px;
+		margin: 5px;
+	}
+	
+	.ui-autocomplete {
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 	.ui-autocomplete { 
 	    overflow-y: scroll; 
 	    overflow-x: hidden;
@@ -56,13 +69,29 @@
 	outline: solid 2px #B3CDFF;
     }
 </style>
+
 </head>
 <body>
 	<h1>챔피언</h1>
+	
+	<div class="tierVersion">
+			<select id="tierSelect" class="selectOption">			
+					<option value="bronze">+Bronze</option>
+					<option value="silver">+Silver</option>
+					<option value="gold">+Gold</option>
+					<option value="platinum">+Platinum</option>
+					<option value="diamond">+Diamond</option>
+			</select>
+			<select id="versionSelect" class="selectOption">
+					<option value="12.14.456.5555">12.14</option>
+					<option value="12.14.456.5555">12.13</option>
+			</select>
+		</div>
+
 	<div>
 		<input id="searchInput" type="text" placeholder="챔피언 검색(가렌, 그라가스...)">
 	</div>
-
+	
 	<table class="position">
 		<tr>
 			<td class="a_img" id="all">
@@ -103,21 +132,25 @@
 		</tr>
 	</table>
 	${chamList}
-	
+
 	<script type="text/javascript">
-		$('.chamImg').click(function(){
-			let data_eName = $(this).attr("data-eName");
-			let data_lane = $(this).attr("data-lane");
-			let data_code = $(this).attr("data-code");
-			let $form = $("<form></form>");
-			$form.attr("action", "champInfo");
-			$("<input>").attr("name", "img").val($(this).attr("data-eName")).appendTo($form);
-			$("<input>").attr("name", "lane").val($(this).attr("data-lane")).appendTo($form);
-			$("<input>").attr("name", "code").val($(this).attr("data-code")).appendTo($form);
-			
-			$form.appendTo("body");
-			$form.submit();
-		});
+		$('.chamImg').click(
+				function() {
+					let data_eName = $(this).attr("data-eName");
+					let data_lane = $(this).attr("data-lane");
+					let data_code = $(this).attr("data-code");
+					let $form = $("<form></form>");
+					$form.attr("action", "champInfo");
+					$("<input>").attr("name", "img").val(
+							$(this).attr("data-eName")).appendTo($form);
+					$("<input>").attr("name", "lane").val(
+							$(this).attr("data-lane")).appendTo($form);
+					$("<input>").attr("name", "code").val(
+							$(this).attr("data-code")).appendTo($form);
+
+					$form.appendTo("body");
+					$form.submit();
+				});
 	</script>
 </body>
 </html>
