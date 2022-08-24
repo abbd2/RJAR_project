@@ -76,9 +76,14 @@
 	<h2>${soloWinRate}</h2>
 	<h2>${gameDuration}</h2>
 	<h2>${gameEndTimestamp}</h2>
-	<h2>${DetailList}</h2>
+	<h2>${json}</h2>
 	
 	<div id="main"></div>
 	<div id="footer"></div>
+<script type="text/javascript">
+console.log(Object.keys(${json}))
+
+
+</script>
 </body>
 </html>
