@@ -8,7 +8,7 @@
 
 
 <style type="text/css">
-.tierVersion{
+.tierVersion {
 	margin-left: 70px;
 }
 
@@ -75,31 +75,30 @@ small {
 #searchInput:focus {
 	outline: solid 2px #B3CDFF;
 }
-
 </style>
 
 
 </head>
 <body>
-	<h1>챔피언</h1>
+
+	<form action="">
+		<div class="tierVersion">
+			<select id="tierSelect" class="selectOption">
+				<option value="bronze">+Bronze</option>
+				<option value="silver">+Silver</option>
+				<option value="gold">+Gold</option>
+				<option value="platinum">+Platinum</option>
+				<option value="diamond">+Diamond</option>
+			</select>
+			<!-- 		</select> <select id="versionSelect" class="selectOption"> -->
+			<!-- 			<option value="12.14.456.5556">12.14</option> -->
+			<!-- 			<option value="12.13.456.5556">12.13</option> -->
+			<!-- 		</select> -->
+		</div>
+	</form>
 	<div>
 		<input id="searchInput" type="text" placeholder="챔피언 검색(가렌, 그라가스...)">
 	</div>
-	
-¿	<div class="tierVersion">
-			<select id="tierSelect" class="selectOption">
-					<option>+Platinum</option>
-					<option>+Diamond</option>
-					<option>+Master</option>
-					<option>+Grand Master</option>
-					<option>+Challenger</option>
-			</select>
-			<select id="versionSelect" class="selectOption">
-					<option>버전1</option>
-					<option>버전2</option>
-					<option>버전3</option>
-			</select>
-		</div>
 	<table class="position">
 		<tr>
 			<td class="a_img" id="all"><a class="all"

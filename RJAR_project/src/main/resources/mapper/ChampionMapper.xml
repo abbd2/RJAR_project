@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rjar.www.dao.IchampionDao">
+	
+	<select id="getChampionList" resultType="Champion">
+	SELECT A.CHAMPIONAME, B.CHAMPION_KR_NAME,, B.CHAMPIONID 
+	FROM ${tier} A
+	INNER JOIN
+	STATS_SKILL_DATA B
+	ON A.CHAMPIONNAME = B.CHAMPIONNAME
+	ORDER BY B.CHAMPION_KR_NAME
+	</select>
+	
+	<select id="getwinRate" resultType="Champion">
+	
+	</select>
+	
+	
+	
+	
+	
+<!-- 	winRate  -->
+<!-- 	pickRate banRate counter_champName -->
+</mapper>
