@@ -13,9 +13,9 @@ public class MultiSearchBean {
 	private String tier;
 	private String rank;
 	private String lp;
-	private int totalWins;
-	private int totalLosses;
-	private int totalWinRate;
+	private String totalWins;
+	private String totalLoses;
+	private String totalWinRate;
 	
 	private String[] lanes;
 	private int[] kilss;
