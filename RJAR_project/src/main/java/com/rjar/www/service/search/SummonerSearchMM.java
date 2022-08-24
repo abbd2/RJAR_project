@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.rjar.www.bean.summonersearch.GameDetailShowInfo;
 
 import lombok.extern.log4j.Log4j;
 
@@ -181,9 +182,9 @@ public class SummonerSearchMM {
 			}
 			
 			String matchUrl = "https://asia.api.riotgames.com/lol/match/v5/matches/";
-			ArrayList<Object> matchData = new ArrayList<Object>();
+			
 			for(int i=0; i<1; i++) {
-				URL url2 = new URL(matchUrl+matchDataList.get(i).replaceAll("\"", "")+"?api_key="+api_key);
+				URL url2 = new URL(matchUrl+matchDataList.get(i).replaceAll("\"", "")+"?api_key="+api_key); // 정규화("" 제거)
 				urlconnection = (HttpURLConnection) url2.openConnection();
 				urlconnection.setRequestMethod("GET");
 				br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
@@ -191,21 +192,86 @@ public class SummonerSearchMM {
 				JsonParser jsonParser1 = new JsonParser();
 				JsonObject k = (JsonObject) jsonParser1.parse(result1);
 				JsonObject info = (JsonObject)k.get("info");
+				JsonArray participants = info.getAsJsonArray("participants");
 				
-				matchData.add(info.get("gameDuration"));
-				matchData.add(info.get("gameEndTimestamp"));
+				System.out.println("info="+participants);
+				System.out.println("type="+(participants).getClass().getName());
+				System.out.println(participants.size());
+
+				int gameDuration = info.get("gameDuration").getAsInt();
+				int gameEndTimestamp = info.get("gameEndTimestamp").getAsInt();
+
+				
+				List<GameDetailShowInfo> participantsList = new ArrayList<>();
+				for(int j=0; j<participants.size(); j++) {
+					List<GameDetailShowInfo> totalList = new ArrayList<>();
+					JsonObject participant = (JsonObject) participants.get(j);
+					System.out.println("participant"+participant);
+					JsonObject challenges = (JsonObject)participant.get("challenges");
+					System.out.println(challenges);
+					JsonObject perks = (JsonObject)participant.get("perks");
+					System.out.println(perks);
+					JsonArray styles = perks.getAsJsonArray("styles");
+					System.out.println(styles);
+					JsonObject PrimeSelections = (JsonObject) styles.get(0);
+					System.out.println(PrimeSelections);
+					JsonObject SubSelections = (JsonObject) styles.get(1);
+					System.out.println(SubSelections);
+					JsonArray prime = PrimeSelections.getAsJsonArray("selections");
+					System.out.println(prime);
+					JsonObject mainPrime = (JsonObject) prime.get(0);
+
+					
+					
+					String ChampionName = participant.get("championName").getAsString(); 
+					String champLevel = participant.get("champLevel").getAsString(); 
+					int championId = participant.get("championId").getAsInt(); 
+					int summoner1Id = participant.get("summoner1Id").getAsInt(); 
+					int summoner2Id = participant.get("summoner2Id").getAsInt();
+					int mainStyle=mainPrime.get("perk").getAsInt();
+					int subStyle=SubSelections.get("style").getAsInt();
+					int kills = participant.get("kills").getAsInt(); 
+					int assists = participant.get("assists").getAsInt(); 
+					int deaths = participant.get("deaths").getAsInt();
+					double kda = participant.get("kda").getAsDouble();
+					double killParticipation = participant.get("killParticipation").getAsDouble();
+					int totalDamageDealtToChampions = participant.get("totalDamageDealtToChampions").getAsInt(); 
+					int totalDamageTaken = participant.get("totalDamageTaken").getAsInt();
+					int visionWardsBoughtIngame = participant.get("visionWardsBoughtIngame").getAsInt(); 
+					int wardsKilled = participant.get("wardsKilled").getAsInt();
+					int wardsPlaced = participant.get("wardsPlaced").getAsInt(); 
+					int totalMinionsKilled = participant.get("totalMinionsKilled").getAsInt(); 
+					int item0 = participant.get("item0").getAsInt();
+					int item1 = participant.get("item1").getAsInt(); 
+					int item2 = participant.get("item2").getAsInt(); 
+					int item3 = participant.get("item3").getAsInt();
+					int item4 = participant.get("item4").getAsInt(); 
+					int item5 = participant.get("item5").getAsInt(); 
+					int item6 = participant.get("item6").getAsInt();
+					
+					
+				}
 				
 				
-												
+				
+				mav.setViewName("summonerSearch");
+				mav.addObject("gameDuration", gameDuration);
+				mav.addObject("gameEndTimestamp", gameEndTimestamp);
+//				mav.addObject("DetailList",makeHtml_personalDetailList(participantsList));
 			}
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("오류="+e.getMessage());
 		}
 		
-	
-
 		return mav;
 	}
+
+	private Object makeHtml_personalDetailList(List<GameDetailShowInfo> redPersonalDetailList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

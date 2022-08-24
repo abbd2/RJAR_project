@@ -73,7 +73,10 @@
 	<h2>${soloLeaguePoint}</h2>
 	<h2>${soloWins}</h2>
 	<h2>${soloLosses}</h2>
-	<h2>${soloWinRate}%</h2>
+	<h2>${soloWinRate}</h2>
+	<h2>${gameDuration}</h2>
+	<h2>${gameEndTimestamp}</h2>
+	<h2>${DetailList}</h2>
 	
 	<div id="main"></div>
 	<div id="footer"></div>
