@@ -35,11 +35,12 @@
 	<div id="main"></div>
 
 	<div id="multiSearch">
-		<div id="textarea">
-			<textarea name="summoners" class="form-control" id="exampleTextarea"
-				style="height: 300px">
-			</textarea>
-		</div>
+		<form action="executeMultiSearch" method="get">
+			<div id="textarea">
+				<textarea name="summoners" class="form-control" id="exampleTextarea" style="height: 300px"></textarea>
+				<input type="submit">
+			</div>
+		</form>
 	</div>
 
 	<div id="footer"></div>

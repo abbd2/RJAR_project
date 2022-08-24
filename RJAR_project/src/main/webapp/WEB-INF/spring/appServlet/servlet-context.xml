@@ -24,6 +24,15 @@
 	<context:component-scan base-package="com.rjar.www.*" />
 	<context:component-scan base-package="com.rjar.www.controller" />
 	
-	
+	<!-- Jakcson 설정 -->
+	<!-- @ResponseBody 어노테이션을 사용하지 않고, MappingJackson2JsonView(이하 JsonView)를 -->
+	<!-- Bean으로 등록하여 Model에 심어진 키-값을 JSON으로 변환할 경우 설정합니다. -->
+	<!-- JsonView를 사용하기 위해서는 BeanNameViewResolver를 빈으로 등록하여야 합니다. -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver"> 
+		<beans:property name="order" value="0"/> 
+	</beans:bean>
+	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<beans:property name="contentType" value="application/json;charset=UTF-8" />
+	</beans:bean>
 	
 </beans:beans>
