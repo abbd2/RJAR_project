@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -24,16 +24,26 @@
 <title>Insert title here</title>
 <style type="text/css">
 .summoner-search-outter-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 100px;
 }
 </style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<div id="main"></div>
-<div id="footer"></div>
+	<jsp:include page="../header.jsp"></jsp:include>
+	<main>
+		<div id='box'>
+			<div id='main'>
+				<aside>
+					<div id='champion_list'>
+						<jsp:include page="championList.jsp"></jsp:include>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</main>
+	<div id="footer"></div>
 </body>
 </html>
