@@ -1,13 +1,8 @@
 package com.rjar.www.controller;
 
-<<<<<<< HEAD
-=======
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> san
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,21 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 import com.rjar.www.dao.IMemberDao;
 import com.rjar.www.service.bean.championDetail.Champion;
 import com.rjar.www.service.championDetail.ChampionDetailMM;
->>>>>>> san
 
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
 public class HomeController {
-<<<<<<< HEAD
-=======
 	
 	@Autowired
 	private ChampionDetailMM champmm; 
 
 	ModelAndView mav;
->>>>>>> san
 
 	// servlet-context.xml에서 해당 패키지 스캔
 	@GetMapping(value = "/")
