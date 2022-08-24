@@ -10,13 +10,13 @@
 <!-- <mapper namespace="memberMapper"> <select id="access" resultType="boolean"> 
 	SELECT COUNT(*) FROM MEMBER WHERE M_ID=#{m_id} AND M_PWD=#{m_pwd} </select> 
 	</mapper> -->
-
+<!-- 
 <mapper namespace="com.rjar.www.dao.IMemberDao">
 
-	<!-- id를 함수명과 같게 할 것 -->
+	id를 함수명과 같게 할 것
 	<select id="showMember" resultType="Member">
 		select * from member
 	</select>
 	
-</mapper>
+</mapper> -->
 
