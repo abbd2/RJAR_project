@@ -2,6 +2,12 @@ package com.rjar.www.service.search;
 
 import java.io.BufferedReader;
 
+<<<<<<< HEAD
+=======
+
+
+import java.io.IOException;
+>>>>>>> san
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -26,19 +32,30 @@ public class SummonerSearchMM {
 
 	ModelAndView mav;
 	String api_key = "RGAPI-4843ae9e-7ede-4140-8341-164bbda24a7b";
+<<<<<<< HEAD
 	BufferedReader br = null;
+=======
+>>>>>>> san
 
-	public ModelAndView sSummonerSearch(String summonerName) {
+	public ModelAndView sSummonerSearch(String id) {
 
+<<<<<<< HEAD
 		log.info("소환사 이름: " + summonerName);
 		mav = new ModelAndView();
 		String proFileUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName
 				+ "?api_key=" + api_key;
+=======
+		log.info("소환사 이름: " + id);
+		BufferedReader br = null;
+		mav = new ModelAndView();
+		String tierInfoUrl = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+id+"?api_key="+api_key;
+
+>>>>>>> san
 		// 개인 권한 API
 		try {
 			// URL 객체 생성
-			URL url1 = new URL(proFileUrl);
 			// URL에서 URLConnection 객체 얻기(프로토콜이 http://인 경우 아래 객체로 캐스팅 가능)
+<<<<<<< HEAD
 			HttpURLConnection urlconnection = (HttpURLConnection) url1.openConnection(); // openConnection() 메서드는
 																							// IOException 발생
 			urlconnection.setRequestMethod("GET");
@@ -71,6 +88,25 @@ public class SummonerSearchMM {
 			// 해당형태는 jsonArray형태라 jsonArray로 먼저 parser하여 json object를 구해야한다.
 			JsonArray jsonArray = (JsonArray) jsonParser.parse(result1);
 
+=======
+			
+			//위에서 받은 id로 url에 넣어 tier관련 정보 추출
+			URL url = new URL(tierInfoUrl);
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+			urlconnection.setRequestMethod("GET");
+			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+			
+			System.out.println(br);
+			String result1=br.readLine();
+			System.out.println(result1);
+			
+			JsonParser jsonParser = new JsonParser();
+			// 해당형태는 jsonArray형태라 jsonArray로 먼저 parser하여 json object를 구해야한다.
+			JsonArray jsonArray = (JsonArray)jsonParser.parse(result1);
+			System.out.println("길이="+jsonArray.size());
+			
+			
+>>>>>>> san
 			String freeTier;
 			int freeLeaguePoint = 0;
 			int freeWins = 0;
@@ -133,6 +169,7 @@ public class SummonerSearchMM {
 				soloTier = "unranked";
 				freeTier = "unranked";
 			}
+<<<<<<< HEAD
 			mav = summonerMatchDetail(puuid);
 
 			mav.setViewName("summonerSearch");
@@ -150,6 +187,31 @@ public class SummonerSearchMM {
 			mav.addObject("soloLosses", soloLosses);
 			mav.addObject("soloWinRate", (int) (soloWinRate * 100));
 
+=======
+			
+			System.out.println("freeTier=" + freeTier);
+			System.out.println("freeLeaguePoint=" + freeLeaguePoint);
+			System.out.println("freeWins=" + freeWins);
+			System.out.println("freeLooses=" + freeLosses);		
+			System.out.println("freeWinRate=" + freeWinRate);		
+			System.out.println("soloTier=" + soloTier);
+			System.out.println("soloLeaguePoint=" + soloLeaguePoint);
+			System.out.println("soloWins=" + soloWins);
+			System.out.println("soloLooses=" + soloLosses);		
+			System.out.println("soloWinRate=" + soloWinRate);		
+			
+			mav.addObject("freeTier",freeTier);
+			mav.addObject("freeLeaguePoint",freeLeaguePoint);
+			mav.addObject("freeWins",freeWins);
+			mav.addObject("freeLosses",freeLosses);
+			mav.addObject("freeWinRate",(int)(freeWinRate*100));
+			mav.addObject("soloTier",soloTier);
+			mav.addObject("soloLeaguePoint",soloLeaguePoint);
+			mav.addObject("soloWins",soloWins);
+			mav.addObject("soloLosses",soloLosses);
+			mav.addObject("soloWinRate",(int)(soloWinRate*100));
+			
+>>>>>>> san
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

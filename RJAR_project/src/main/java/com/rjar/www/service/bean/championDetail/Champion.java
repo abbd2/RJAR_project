@@ -6,10 +6,10 @@ import lombok.Data;
 
 @Data
 public class Champion {
-	
+
 	private String tier;
 	private String lane;
-	
+
 	private String eg_champName;
 	private String kr_champName;
 	private String champId;
@@ -18,7 +18,5 @@ public class Champion {
 	private Double pickRate;
 	private Double banRate;
 	private List<String> counter_champName;
-	
-	
-	
+
 }
