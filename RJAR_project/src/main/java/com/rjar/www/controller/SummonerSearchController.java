@@ -6,16 +6,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rjar.www.service.search.SummonerSearchMM;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-@RequiredArgsConstructor
 public class SummonerSearchController {
 
 	private SummonerSearchMM ssm;
-	
 	ModelAndView mav;
 
 	@GetMapping(value = "/summonerSearch")

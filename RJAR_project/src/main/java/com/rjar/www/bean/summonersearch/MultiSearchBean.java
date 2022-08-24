@@ -2,9 +2,15 @@ package com.rjar.www.bean.summonersearch;
 
 import org.springframework.stereotype.Repository;
 
+<<<<<<< .merge_file_a03984
 
 import lombok.Data;
 
+=======
+import lombok.Data;
+
+// 다시커밋
+>>>>>>> .merge_file_a13200
 @Data
 @Repository
 public class MultiSearchBean {
