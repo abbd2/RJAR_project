@@ -127,6 +127,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav me-auto">
+						<li class="nav-item"><a class="nav-link" href="./Detail/championHome">챔피언분석</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="./championHome">챔피언분석</a></li>
 						<li class="nav-item"><a class="nav-link" href="./laboratory">연구소</a></li>

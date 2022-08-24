@@ -21,18 +21,10 @@
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
 <title>Insert title here</title>
-<style type="text/css">
-.summoner-search-outter-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 100px;
-}
-</style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>	
-<div id="main"></div>
-<div id="footer"></div>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div id="main"></div>
+	<div id="footer"></div>
 </body>
 </html>
