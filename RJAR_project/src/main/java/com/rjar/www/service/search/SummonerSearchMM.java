@@ -220,6 +220,7 @@ public class SummonerSearchMM {
 					preMap.put("championName",participant.get("championName").getAsString());
 					preMap.put("championId",participant.get("championId").getAsInt());
 					preMap.put("champLevel",participant.get("champLevel").getAsInt());
+					preMap.put("participantId",participant.get("participantId").getAsString());
 					preMap.put("win",participant.get("win").getAsString());
 					      
 					preMap.put("summoner1Id",participant.get("summoner1Id").getAsInt());
